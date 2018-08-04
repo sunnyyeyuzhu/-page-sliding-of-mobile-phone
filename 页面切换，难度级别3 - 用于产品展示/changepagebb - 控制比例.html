@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="format-detection" content="telephone=no" />
+		<meta name = "viewport" content ="width=device-width,initial-scale=1.0,user-scalable=no,target-densitydpi=device-dpi"/>
+		<link rel="stylesheet" href="css/media.css">
+		<link rel="stylesheet" href="css/swiper.min.css">
+		<link rel="stylesheet" href="css/pagechange-other.css">
+		<title>手机端全屏切换demo</title>
+		<script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
+		<script type="text/javascript" src="js/swiper.min.js"></script>
+		
+	</head>
+	<body>
+		
+		<div class="swiper-container">
+			<div class="swiper-pagination"></div>
+			<div class="swiper-wrapper">		
+				<div class="swiper-slide slide0"></div>
+				<div class="swiper-slide slide1"></div>
+				<div class="swiper-slide slide2"></div>
+				<div class="swiper-slide slide3"></div>
+				<div class="swiper-slide slide4"></div>
+				<div class="swiper-slide slide5"></div>
+				<div class="swiper-slide slide6"></div>
+				<div class="swiper-slide slide7"></div>
+			</div>
+		</div>
+		<div class="listbox">
+			<ul>
+				<li><div>列表1</div></li>
+				<li><div>列表2</div></li>
+				<li><div>列表3</div></li>
+				<li><div>列表4</div></li>
+				<li><div>列表5</div></li>
+				<li><div>列表6</div></li>
+				<li><div>列表7</div></li>
+				<li><div>列表8</div></li>
+				<li><div>列表9</div></li>
+				<li><div>列表10</div></li>
+				<li><div>列表11</div></li>
+				<li><div>列表12</div></li>
+			</ul>
+		</div>
+	</body>
+<script>
+	
+
+ var swiper = new Swiper('.swiper-container', {
+        pagination: '.swiper-pagination',
+		paginationClickable:true,
+        effect: 'coverflow',
+        grabCursor: true,
+        centeredSlides: true,
+        slidesPerView: 'auto',
+        coverflow: {
+            rotate: 50,
+            stretch: 0,
+            depth: 100,
+            modifier: 1,
+            slideShadows : true
+        }
+    });
+
+$(function(){
+	$('.listbox').height($(window).height()-$('.swiper-container').height())
+})
+	</script>
+</html>

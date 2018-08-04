@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="format-detection" content="telephone=no" />
+		<meta name = "viewport" content ="width=device-width,initial-scale=1.0,user-scalable=no,target-densitydpi=device-dpi"/>
+		<link rel="stylesheet" href="css/media.css">
+		<link rel="stylesheet" href="css/swiper.min.css">
+		<link rel="stylesheet" href="css/pagechange.css">
+		<title>手机端全屏切换demo</title>
+		<script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
+		<script type="text/javascript" src="js/swiper.min.js"></script>
+		
+	</head>
+	<body>
+		<div class="swiper-container">
+			<div class="swiper-wrapper">		
+				<div class="swiper-slide slide0">
+					<div class="downarr"></div>
+					<h1>请用鼠标上下滑动来看效果</h1>
+				</div>
+				<div class="swiper-slide slide1"></div>
+				<div class="swiper-slide slide2"></div>
+				<div class="swiper-slide slide3"></div>
+			</div>
+		</div>
+		
+	</body>
+	<script>
+		
+	
+	function fixPagesHeight() {
+		$('.swiper-container,.swiper-slide').css({
+			height: $(window).height(),
+		})
+	}
+	$(window).on('resize', function() {
+		fixPagesHeight();
+	})
+
+	fixPagesHeight();
+	
+	var mySwiper = new Swiper('.swiper-container', {
+	
+    direction: 'vertical',
+   
+    watchSlidesProgress: true,
+	
+    onInit: function(swiper) {
+      
+        
+    },
+    onProgress: function(swiper) {
+       
+
+    },
+
+
+    onTransitionEnd: function(swiper, speed) {
+       
+
+    },
+    onSetTransition: function(swiper, speed) {
+
+       
+
+    }
+
+});
+ 
+
+
+	
+	</script>
+</html>

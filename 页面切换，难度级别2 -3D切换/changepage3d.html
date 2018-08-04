@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="format-detection" content="telephone=no" />
+		<meta name = "viewport" content ="width=device-width,initial-scale=1.0,user-scalable=no,target-densitydpi=device-dpi"/>
+		<link rel="stylesheet" href="css/media.css">
+		<link rel="stylesheet" href="css/swiper.min.css">
+		<link rel="stylesheet" href="css/pagechange.css">
+		<title>手机端全屏切换demo2</title>
+		<script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
+		<script type="text/javascript" src="js/Swiper.min.js"></script>
+		
+	</head>
+	<body>
+		<div class="swiper-container">
+			<div class="swiper-pagination"></div>
+			<div class="swiper-wrapper">		
+				<div class="swiper-slide slide0">
+					<div class="downarr"></div>
+					<h1>请用鼠标上下滑动来看效果</h1>
+				</div>
+				<div class="swiper-slide slide1"></div>
+				<div class="swiper-slide slide2"></div>
+				<div class="swiper-slide slide3"></div>
+			</div>
+		</div>
+			
+	</body>
+	
+	<script>
+		function fixPagesHeight() {
+    $('.swiper-container,.swiper-slide').css({
+        height: $(window).height(),
+    })
+}
+$(window).on('resize', function() {
+    fixPagesHeight();
+})
+
+fixPagesHeight();
+
+var mySwiper = new Swiper('.swiper-container', {
+	pagination: '.swiper-pagination',
+    paginationClickable: true,   
+    direction: 'vertical',
+    lazyLoading : true,
+    mousewheelControl: true,
+    watchSlidesProgress: true,
+    onInit: function(swiper) {
+        swiper.myactive = 0;
+        
+    },
+    onProgress: function(swiper) {
+        for (var i = 0; i < swiper.slides.length; i++) {
+            var slide = swiper.slides[i];
+            var progress = slide.progress;
+            var translate, boxShadow;
+
+            translate = progress * swiper.height * 0.8;
+            scale = 1 - Math.min(Math.abs(progress * 0.2), 1);
+            boxShadowOpacity = 0;
+
+            slide.style.boxShadow = '0px 0px 10px rgba(0,0,0,' + boxShadowOpacity + ')';
+
+            if (i == swiper.myactive) {
+                es = slide.style;
+                es.webkitTransform = es.MsTransform = es.msTransform = es.MozTransform = es.OTransform = es.transform = 'translate3d(0,' + (translate) + 'px,0) scale(' + scale + ')';
+                es.zIndex=0;
+
+
+            }else{
+                es = slide.style;
+                es.webkitTransform = es.MsTransform = es.msTransform = es.MozTransform = es.OTransform = es.transform ='';
+                es.zIndex=1;
+                
+            }
+
+        }
+
+    },
+
+
+    onTransitionEnd: function(swiper, speed) {
+        for (var i = 0; i < swiper.slides.length; i++) {
+         es = swiper.slides[i].style;
+         es.webkitTransform = es.MsTransform = es.msTransform = es.MozTransform = es.OTransform = es.transform = '';
+
+          swiper.slides[i].style.zIndex = Math.abs(swiper.slides[i].progress);
+
+            
+        }
+
+        swiper.myactive = swiper.activeIndex;
+
+    },
+    onSetTransition: function(swiper, speed) {
+
+        for (var i = 0; i < swiper.slides.length; i++) {
+            if (i == swiper.myactive) {
+
+                es = swiper.slides[i].style;
+                es.webkitTransitionDuration = es.MsTransitionDuration = es.msTransitionDuration = es.MozTransitionDuration = es.OTransitionDuration = es.transitionDuration = speed + 'ms';
+            }
+        }
+
+    }
+
+});
+		
+	</script>
+</html>
